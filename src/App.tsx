@@ -19,7 +19,7 @@ function App() {
       <StateContext.Provider value={{ changeTheme: handleThemeChange }}>
         <GlobalStyle />
         <BrowserRouter>
-          <Redirect exact from={'/'} to={'/auth/login'} />
+          {/*<Redirect exact from={''} to={'/auth/login'} />*/}
           <Router />
         </BrowserRouter>
       </StateContext.Provider>

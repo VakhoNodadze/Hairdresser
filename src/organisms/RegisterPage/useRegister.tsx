@@ -50,7 +50,7 @@ const useRegistration = () => {
     errors,
     setError
   } = useForm<RegistrationFormType>({
-    resolver: yupResolver(registerAddresser === 'client' ? clientSchema : schema),
+    // resolver: yupResolver(registerAddresser === 'client' ? clientSchema : schema),
     shouldFocusError: true
   });
 

@@ -55,7 +55,6 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
               name='phoneNumber'
               control={control}
               defaultValue=''
-              error={errors['phoneNumber']}
               as={() => {
                 return <Input bg='rgb(246, 249, 252)' name='phoneNumber' fontSize='lg' p={theme.space.tiny}
                   register={register} width='75%' />;

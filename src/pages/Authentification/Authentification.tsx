@@ -24,10 +24,7 @@ const Authentication = () => {
             fontSize={'xl'}
             lineHeight={32}
           >
-              Story telling for businesses
-          </Text>
-          <Text color='white' fontSize='xxl'>
-              Let your story begin!
+              Cut your hair with the best barbers!
           </Text>
         </div>
         <Switch>

@@ -37,8 +37,6 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
   const { replace } = useHistory();
   const dispatch = useDispatch();
 
-  console.log('chosenDressers', chosenDressers);
-
   const onSubmit = (data: IFormInput) => {
     dispatch(updateReview({ id, review: data }));
   };
@@ -49,8 +47,6 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
   };
 
   const hairdresser = users.find((dresser) => dresser.id === id)!;
-
-  console.log('ID', hairdressers);
 
   const renderReviewAbility = () => (
     <Flex width='50%' m='auto'>

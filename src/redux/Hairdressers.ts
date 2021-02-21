@@ -8,7 +8,7 @@ const hairdressers = [
     lastName: 'Wayne',
     email: 'brucewayne@gmail.com',
     countryCode: '',
-    phoneNumber: '598661721',
+    phoneNumber: '01',
     price: 999,
     password: '123',
     passwordConfirmation: '123',

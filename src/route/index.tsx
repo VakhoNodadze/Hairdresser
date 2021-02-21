@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import routesConfig from './routes';
 
 interface AppRouteProps {
@@ -17,6 +17,7 @@ const AppRoute: FC <AppRouteProps> = ({ layout: Layout, ...rest }) => (
 
 const Router = () => (
   <Switch>
+    <Redirect exact from={'/'} to={'/auth/login'} />
     {routesConfig.map((route) => (
       <AppRoute
         key={route.path || 'notFound'}
