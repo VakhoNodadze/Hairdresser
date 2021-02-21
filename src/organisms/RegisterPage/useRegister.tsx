@@ -50,17 +50,16 @@ const useRegistration = () => {
     errors,
     setError
   } = useForm<RegistrationFormType>({
-    // resolver: yupResolver(registerAddresser === 'client' ? clientSchema : schema),
+    resolver: yupResolver(registerAddresser === 'client' ? clientSchema : schema),
     shouldFocusError: true
   });
 
   const dispatch = useDispatch();
 
-
-
   const registerHairdresser = () => {
     setRegisterAddresser('hairdresser');
   };
+
   const registerClient = () => {
     setRegisterAddresser('client');
   };
@@ -70,6 +69,7 @@ const useRegistration = () => {
   const onSubmit = (data:any, e: any) => {
     e.preventDefault();
     dispatch(registerUser({ isUser: registerAddresser === 'client', ...data, id: v4(), review: [] }));
+    push('/auth/login');
   };
 
   return {

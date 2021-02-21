@@ -45,7 +45,7 @@ const LoginPage: FC <Props> = ({ theme }) => {
               control={control}
               as={() => {
                 return <Input bg='rgb(246, 249, 252)' name='password' fontSize='lg' p={theme.space.tiny} register={register}
-                  width='75%' />;
+                  width='75%' type='password' />;
               }}
             />
           </div>
