@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppState } from 'redux/ducks';
 import { REGISTERPAYLOAD, registerUser } from 'redux/ducks/authorization';
 import * as Yup from 'yup';

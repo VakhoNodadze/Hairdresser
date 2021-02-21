@@ -1,19 +1,3 @@
-export enum PluginItemSortingByStatusEnum {
-    All = 'All',
-    Scheduled = 'Scheduled',
-    Published = 'Published',
-    Expired = 'Expired',
-}
-
-export enum PluginItemShowTypeEnum {
-    List = 'list',
-    Square = 'square',
-    Setting = 'setting',
-    Embed = 'embed',
-    SlideConfig = 'slideConfig',
-    Adverts = 'adverts',
-}
-
 export enum DynamicFieldsEnum {
     Input = 'Input',
     Radio = 'Radio',
@@ -32,9 +16,3 @@ export enum DynamicFieldsEnum {
     Switch = 'Switch',
 }
 
-export enum FormPageTypeEnum {
-    registration = 'registration',
-    addCompany = 'addCompany',
-    addWebsite = 'addWebsite',
-    addUsers = 'addUsers',
-}

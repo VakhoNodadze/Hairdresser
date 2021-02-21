@@ -1,6 +1,10 @@
 import hairdressers from '../Hairdressers';
 const REGISTER = 'REGISTER';
 
+export interface REVIEW {
+  score: number;
+  comment: string;
+}
 export interface REGISTERPAYLOAD {
   id: string;
   firstName: string;
@@ -10,6 +14,7 @@ export interface REGISTERPAYLOAD {
   price: number;
   password: string;
   passwordConfirmation: string;
+  review: REVIEW[];
 }
 
 export interface INITIALSTATE {

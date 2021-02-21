@@ -15,6 +15,7 @@ export interface FontSizes {
   lg: string;
   xl: string;
   xxl: string;
+  xxxl: string;
 };
   
 export interface Breakpoints {
@@ -132,6 +133,7 @@ export interface Colors {
   green300: string,
   borderLight: string,
 
+  topbarBg: string;
   tabBorder: string,
   iconPurple: string,
   purpleBg: string
@@ -207,6 +209,7 @@ const nonChangingColors = {
   green300: '#68BA6C',
   borderLight: '#f0f0f0',
 
+  topbarBg: 'rgba(31,48,68,.9)',
   tabBorder: '#7754F8',
   iconPurple: '#7754F8',
   purpleBg: '#F1EDFE'
@@ -305,7 +308,8 @@ export const fontSizes = {
   body: '16px',
   lg: '1.125rem',
   xl: '1.5rem',
-  xxl: '1.75rem'
+  xxl: '2rem',
+  xxxl: '3rem'
 };
 
 export const fonts = {

@@ -42,7 +42,7 @@ const useRegistration = () => {
     for(let i = 0; i < users.length; i++){
       if(users[i].phoneNumber === data.phoneNumber && users[i].password === data.password){
         replace('/hairdressers');
-        localStorage.setItem('userId', users[i].id.toString());
+        localStorage.setItem('isLoggedIn', JSON.stringify(true));
       }
     }
   };
