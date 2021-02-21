@@ -1,5 +1,6 @@
 import hairdressers from '../Hairdressers';
 const REGISTER = 'REGISTER';
+const UPDATE_REVIEW = 'UPDATE_REVIEW';
 
 export interface REVIEW {
   score: number;
@@ -25,8 +26,17 @@ export interface AUTHACTION {
   type: typeof REGISTER;
   payload: REGISTERPAYLOAD;
 }
+export interface REVIEWGIVE {
+  review: REVIEW;
+  id: string;
+}
 
-export type Action = AUTHACTION
+export interface UPDATEDRESSER {
+  type: typeof UPDATE_REVIEW;
+  payload: REVIEWGIVE;
+}
+
+export type Action = AUTHACTION | UPDATEDRESSER
 
 
 export default (state: INITIALSTATE = { users: hairdressers }, action: Action) : INITIALSTATE => {
@@ -36,6 +46,13 @@ export default (state: INITIALSTATE = { users: hairdressers }, action: Action) :
       ...state,
       users: [...state.users, action.payload]
     };
+  case UPDATE_REVIEW:
+    const user = state.users.find((user) => user.id === action.payload.id)!;
+    user.review = [...user.review, action.payload.review];
+    return {
+      ...state,
+      users: [...state.users, user]
+    };
   default: 
     return state;
   }
@@ -44,6 +61,13 @@ export default (state: INITIALSTATE = { users: hairdressers }, action: Action) :
 export const registerUser = (data: REGISTERPAYLOAD) : AUTHACTION => {
   return {
     type: REGISTER,
+    payload: data
+  };
+};
+
+export const updateReview = (data: REVIEWGIVE) : UPDATEDRESSER => {
+  return {
+    type: UPDATE_REVIEW,
     payload: data
   };
 };

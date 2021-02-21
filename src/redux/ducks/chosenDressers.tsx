@@ -1,4 +1,4 @@
-const CHOOSED_DRESSER = 'CHOOSED_DRESSER';
+const CHOSE_DRESSER = 'CHOSE_DRESSER';
 
 export interface chosenDresser {
     id: string;
@@ -9,7 +9,7 @@ export interface INITIALSTATE {
 }
 
 export interface AUTHACTION {
-    type: typeof CHOOSED_DRESSER;
+    type: typeof CHOSE_DRESSER;
     payload: string;
 }
 
@@ -18,7 +18,7 @@ export type Action = AUTHACTION
 
 export default (state: INITIALSTATE = { chosenDressers: [] }, action: Action) : INITIALSTATE => {
   switch (action.type){
-  case CHOOSED_DRESSER:
+  case CHOSE_DRESSER:
     return {
       ...state,
       chosenDressers: [...state.chosenDressers, action.payload]
@@ -30,7 +30,7 @@ export default (state: INITIALSTATE = { chosenDressers: [] }, action: Action) : 
 
 export const addDresser = (data: string) : AUTHACTION => {
   return {
-    type: CHOOSED_DRESSER,
+    type: CHOSE_DRESSER,
     payload: data
   };
 };

@@ -5,7 +5,7 @@ import { Radio } from 'antd';
 import { useForm, Controller } from 'react-hook-form';
 
 import { ThemeProps } from 'styled/themes';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Link } from 'react-router-dom';
 import hairdressers from 'redux/Hairdressers';
 import Flex from 'atoms/Flex';
 import Text from 'atoms/Text';
@@ -13,9 +13,9 @@ import Button from 'atoms/Button';
 import { List, ListItem } from 'molecules/List';
 import { useSelector } from 'react-redux';
 import { AppState } from 'redux/ducks';
-import { addDresser } from 'redux/ducks/userInfo';
-import { chosenDresser } from 'redux/ducks/userInfo';
-import { REGISTERPAYLOAD } from 'redux/ducks/authorization';
+import { addDresser } from 'redux/ducks/chosenDressers';
+import { chosenDresser } from 'redux/ducks/chosenDressers';
+import { REGISTERPAYLOAD, updateReview } from 'redux/ducks/authorization';
 import Input from 'atoms/Input/Input';
 
 interface Props extends ThemeProps{}
@@ -37,7 +37,9 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
   const { replace } = useHistory();
   const dispatch = useDispatch();
 
-  const onSubmit = (data: IFormInput) => console.log(data);
+  const onSubmit = (data: IFormInput) => {
+    dispatch(updateReview({ id, review: data }));
+  };
 
   const orderHandler = () => {
     replace('/hairdressers');
@@ -76,6 +78,11 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
 
   return (
     <Flex width='100%' align='center' mt={theme.space.xLarge} direction='column'>
+      <Flex width='50%' m='auto' mb={theme.space.mid} style={{ alignSelf: 'flex-start' }}>
+        <Link to='/hairdressers'>
+          <Text fontSize='xl' color='red400'>Go back</Text>
+        </Link>
+      </Flex>
       <Flex direction='column' align='start' width='50%' m='auto'>
         <Text fontSize='xxxl' my={theme.space.default}>Review {hairdresser.firstName}</Text>
         <Text fontSize='xxl' my={theme.space.default}>His price is: {hairdresser.price}</Text>
