@@ -26,3 +26,6 @@ Adding some more styling is a matter of 2-3 hours.
 
 To view the application, downlaod the project, run npm install or yarn install
 After that, run npm start or yarn start
+
+
+**Basic, one dummy user: phone number: 11, password 11
