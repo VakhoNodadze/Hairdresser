@@ -22,14 +22,12 @@ interface Props extends SystemProps{
   type?: string;
   register: any;
   name?: string;
-  error?: any;
 }
 
-const Input: FC <Props> = ({ placeholder , type, register, error, name, theme, ...rest }) => {
+const Input: FC <Props> = ({ placeholder , type, register, name, theme, ...rest }) => {
   return (
     <StyledContainer>
-      <StyledInput placeholder={placeholder} type={type} name={name} error={error} {...rest} ref={register} />
-      {error?.message && <StyledError>{error?.message}</StyledError>}
+      <StyledInput placeholder={placeholder} type={type} name={name} {...rest} ref={register} />
     </StyledContainer>
   );
 };

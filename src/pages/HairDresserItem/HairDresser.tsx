@@ -1,7 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { withTheme } from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { Radio } from 'antd';
 import { useForm, Controller } from 'react-hook-form';
 
 import { ThemeProps } from 'styled/themes';
@@ -14,6 +13,8 @@ import { useSelector } from 'react-redux';
 import { AppState } from 'redux/ducks';
 import { addDresser } from 'redux/ducks/chosenDressers';
 import { REGISTERPAYLOAD, updateReview } from 'redux/ducks/hairdressers';
+import { message } from 'antd';
+
 
 interface Props extends ThemeProps{}
 
@@ -36,11 +37,13 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
 
   const onSubmit = (data: IFormInput) => {
     dispatch(updateReview({ id, review: data }));
+    message.success('Review Added');
   };
 
   const orderHandler = () => {
     replace('/hairdressers');
     dispatch(addDresser(id));
+    message.success('Hairdresser Chosen. You now review them');
   };
 
   const hairdresser = users.find((dresser) => dresser.id === id)!;

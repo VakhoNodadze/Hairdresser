@@ -4,7 +4,7 @@ type RegistrationFormType = {
     phoneNumber: string;
     price: string;
     password: string;
-    password_confirmation: string;
+    passwordConfirmation: string;
 };
 
 type SelectItemType = {

@@ -39,7 +39,8 @@ const StyledError = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  transform: translate(-100%, 50%);
+  transform: translate(0%, 50%);
+  margin-right: 10px;
   color: red;
 `;
 

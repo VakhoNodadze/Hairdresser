@@ -53,7 +53,8 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
   const renderHairdresserRegister = () => (
     <>
       <Flex direction='column' width='100%'>
-        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}>
+        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}
+          style={{ position: 'relative' }}>
           <Text fontSize='xs' width='30%'>
                       Please Enter your phone number
           </Text>
@@ -63,11 +64,16 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
             defaultValue=''
             as={() => {
               return <Input bg='rgb(246, 249, 252)' name='phoneNumber' fontSize='lg' p={theme.space.tiny}
-                register={register} error={errors.phoneNumber} />;
+                register={register} />;
             }}
           />
+          <Text mr={theme.space.default} color='red400'
+            style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
+            {errors.phoneNumber?.message}
+          </Text>
         </Flex>
-        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}>
+        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}
+          style={{ position: 'relative' }}>
           <Text fontSize='xs' width='30%' >
                   Please Enter your First Name
           </Text>
@@ -77,11 +83,16 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
             defaultValue=''
             as={() => {
               return <Input bg='rgb(246, 249, 252)' name='firstName' fontSize='lg' p={theme.space.tiny} register={register}
-                error={errors.firstName} />;
+              />;
             }}
           />
+          <Text mr={theme.space.default} color='red400'
+            style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
+            {errors.firstName?.message}
+          </Text>
         </Flex>
-        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}>
+        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}
+          style={{ position: 'relative' }}>
           <Text fontSize='xs' width='30%' >
                   Please Enter your Last Name
           </Text>
@@ -91,11 +102,16 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
             control={control}
             as={() => {
               return <Input bg='rgb(246, 249, 252)' name='lastName' fontSize='lg' p={theme.space.tiny} register={register}
-                error={errors.lastName} />;
+              />;
             }}
           />
+          <Text mr={theme.space.default} color='red400'
+            style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
+            {errors.lastName?.message}
+          </Text>
         </Flex>
-        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}>
+        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}
+          style={{ position: 'relative' }}>
           <Text fontSize='xs' width='30%' >
                   Please Enter your Price
           </Text>
@@ -105,11 +121,16 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
             control={control}
             as={() => {
               return <Input bg='rgb(246, 249, 252)' name='price' fontSize='lg' p={theme.space.tiny} register={register}
-                error={errors.price}/>;
+              />;
             }}
           />
+          <Text mr={theme.space.default} color='red400'
+            style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
+            {errors.price?.message}
+          </Text>
         </Flex>
-        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}>
+        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}
+          style={{ position: 'relative' }}>
           <Text fontSize='xs' width='30%' >
                   Please Enter your password
           </Text>
@@ -119,11 +140,16 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
             control={control}
             as={() => {
               return <Input bg='rgb(246, 249, 252)' name='password' fontSize='lg' p={theme.space.tiny} register={register}
-                type='password' error={errors.password} />;
+                type='password' />;
             }}
           />
+          <Text mr={theme.space.default} color='red400'
+            style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
+            {errors.password?.message}
+          </Text>
         </Flex>
-        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}>
+        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}
+          style={{ position: 'relative' }}>
           <Text fontSize='xs' width='30%' >
                  Confirm your password
           </Text>
@@ -133,9 +159,13 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
             control={control}
             as={() => {
               return <Input bg='rgb(246, 249, 252)' name='passwordConfirmation' fontSize='lg' p={theme.space.tiny}
-                register={register} type='password' error={errors.password_confirmation} />;
+                register={register} type='password' />;
             }}
           />
+          <Text mr={theme.space.default} color='red400'
+            style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
+            {errors.passwordConfirmation?.message}
+          </Text>
         </Flex>
       </Flex>
     </>
@@ -144,7 +174,8 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
   const renderClientRegister = () => (
     <>
       <Flex direction='column' width='100%'>
-        <Flex justify='between' width='70%' m='auto'>
+        <Flex justify='between' width='70%' m='auto'
+          style={{ position: 'relative' }}>
           <Text width='30%'>Please enter your phone number</Text>
           <Controller
             name='phoneNumber'
@@ -152,12 +183,16 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
             defaultValue=''
             as={() => {
               return <Input bg='rgb(246, 249, 252)' name='' fontSize='lg' p={theme.space.tiny}
-                // @ts-ignore
-                register={register} error={errors.phoneNumber}/>;
+                register={register} />;
             }}
           />
+          <Text mr={theme.space.default} color='red400'
+            style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
+            {errors.phoneNumber?.message}
+          </Text>
         </Flex>
-        <Flex justify='between' width='70%' m='auto'>
+        <Flex justify='between' width='70%' m='auto'
+          style={{ position: 'relative' }}>
           <Text fontSize='xs' width='30%'>
                     Please Enter your password
           </Text>
@@ -167,11 +202,16 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
             control={control}
             as={() => {
               return <Input bg='rgb(246, 249, 252)' name='password' fontSize='lg' p={theme.space.tiny} register={register}
-                type='password' error={errors.password} />;
+                type='password' my={theme.space.tiny} />;
             }}
           />
+          <Text mr={theme.space.default} color='red400'
+            style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
+            {errors.password?.message}
+          </Text>
         </Flex>
-        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.tiny}>
+        <Flex justify='between' width='70%' margin='auto' align='center' my={theme.space.mid}
+          style={{ position: 'relative' }}>
           <Text fontSize='xs' width='30%' >
                   Confirm your password
           </Text>
@@ -181,9 +221,13 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
             control={control}
             as={() => {
               return <Input bg='rgb(246, 249, 252)' name='passwordConfirmation' fontSize='lg' p={theme.space.tiny}
-                register={register} type='password' error={errors.password_confirmation} />;
+                register={register} type='password' />;
             }}
           />
+          <Text mr={theme.space.default} color='red400'
+            style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
+            {errors.passwordConfirmation?.message}
+          </Text>
         </Flex>
       </Flex>
     </>
