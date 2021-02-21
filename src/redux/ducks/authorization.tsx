@@ -1,12 +1,13 @@
+import hairdressers from '../Hairdressers';
 const REGISTER = 'REGISTER';
 
 export interface REGISTERPAYLOAD {
-  id: number;
-  isRegistered: boolean;
+  id: string;
   firstName: string;
   lastName: string;
   phoneNumber: string;
   countryCode: string;
+  price: number;
   password: string;
   passwordConfirmation: string;
 }
@@ -22,18 +23,8 @@ export interface AUTHACTION {
 
 export type Action = AUTHACTION
 
-const initialState = {
-  id: 0,
-  isRegistered: false,
-  firstName: '',
-  lastName: '',
-  phoneNumber: '598661708',
-  countryCode: '',
-  password: '123',
-  passwordConfirmation: '123'
-};
 
-export default (state: INITIALSTATE = { users:[initialState] }, action: Action) : INITIALSTATE => {
+export default (state: INITIALSTATE = { users: hairdressers }, action: Action) : INITIALSTATE => {
   switch (action.type){
   case REGISTER:
     return {

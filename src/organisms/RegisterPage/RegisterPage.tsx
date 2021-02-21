@@ -14,7 +14,6 @@ import cuntries from './Countries';
 
 interface Props extends ThemeProps{}
 
-
 const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
 
   const {

@@ -39,10 +39,9 @@ const useRegistration = () => {
 
   const onSubmit = (data:any, e: any) => {
     e.preventDefault();
-    console.log('dataaa', data);
     for(let i = 0; i < users.length; i++){
       if(users[i].phoneNumber === data.phoneNumber && users[i].password === data.password){
-        replace('/access!');
+        replace('/hairdressers');
         localStorage.setItem('userId', users[i].id.toString());
       }
     }

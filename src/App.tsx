@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Redirect } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { lightTheme, darkTheme } from './styled/themes';
@@ -19,6 +19,7 @@ function App() {
       <StateContext.Provider value={{ changeTheme: handleThemeChange }}>
         <GlobalStyle />
         <BrowserRouter>
+          <Redirect exact from={'/'} to={'/auth/login'} />
           <Router />
         </BrowserRouter>
       </StateContext.Provider>
