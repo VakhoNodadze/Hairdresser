@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import register from './authorization';
+import register from './hairdressers';
 import chooseDresser from './chosenDressers';
 
 export const rootReducer = combineReducers({

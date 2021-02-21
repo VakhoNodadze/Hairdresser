@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 
 import { useDispatch } from 'react-redux';
 import { AppState } from 'redux/ducks';
-import { REGISTERPAYLOAD, registerUser } from 'redux/ducks/authorization';
+import { REGISTERPAYLOAD, registerUser } from 'redux/ducks/hairdressers';
 import * as Yup from 'yup';
 import { v4 } from 'uuid';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -69,7 +69,7 @@ const useRegistration = () => {
 
   const onSubmit = (data:any, e: any) => {
     e.preventDefault();
-    dispatch(registerUser({ isRegistered: true, ...data, id: v4() }));
+    dispatch(registerUser({ isUser: registerAddresser === 'client', ...data, id: v4() }));
   };
 
   return {

@@ -3,6 +3,7 @@ import { v4 } from 'uuid';
 const hairdressers = [
   {
     id: v4(),
+    isUser: false,
     firstName: 'Bruce',
     lastName: 'Wayne',
     email: 'brucewayne@gmail.com',
@@ -24,6 +25,7 @@ const hairdressers = [
   },
   {
     id: v4(),
+    isUser: false,
     firstName: 'Jason',
     lastName: 'Todd',
     countryCode: '',
@@ -45,6 +47,7 @@ const hairdressers = [
   },
   {
     id: v4(),
+    isUser: false,
     firstName: 'Clark',
     lastName: 'Kent',
     countryCode: '',
@@ -62,6 +65,7 @@ const hairdressers = [
   },
   {
     id: v4(),
+    isUser: false,
     firstName: 'Peter',
     lastName: 'Parkers',
     countryCode: '',
@@ -83,6 +87,7 @@ const hairdressers = [
   },
   {
     id: v4(),
+    isUser: false,
     firstName: 'Vakhtang',
     lastName: 'Nodadze',
     phoneNumber: '598661708',
@@ -96,6 +101,15 @@ const hairdressers = [
         comment: 'meh...'
       }
     ]
+  },
+  {
+    id: v4(),
+    isUser: true,
+    phoneNumber: '11',
+    countryCode: '',
+    price: 50,
+    password: '11',
+    passwordConfirmation: '11'
   }
 ];
 

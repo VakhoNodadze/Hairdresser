@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AppState } from 'redux/ducks';
-import { REGISTERPAYLOAD } from 'redux/ducks/authorization';
+import { REGISTERPAYLOAD } from 'redux/ducks/hairdressers';
 import { useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
 import { message } from 'antd';

@@ -1,5 +1,6 @@
 import hairdressers from '../Hairdressers';
 const REGISTER = 'REGISTER';
+const REGISTER_HAIRDRESSER = 'REGISTER_HAIRDRESSER';
 const UPDATE_REVIEW = 'UPDATE_REVIEW';
 
 export interface REVIEW {
@@ -8,14 +9,15 @@ export interface REVIEW {
 }
 export interface REGISTERPAYLOAD {
   id: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   phoneNumber: string;
-  countryCode: string;
+  countryCode?: string;
   price: number;
   password: string;
   passwordConfirmation: string;
-  review: REVIEW[];
+  review?: REVIEW[];
+  isUser: boolean;
 }
 
 export interface INITIALSTATE {
@@ -48,10 +50,10 @@ export default (state: INITIALSTATE = { users: hairdressers }, action: Action) :
     };
   case UPDATE_REVIEW:
     const user = state.users.find((user) => user.id === action.payload.id)!;
-    user.review = [...user.review, action.payload.review];
+    user.review = [...user.review!, action.payload.review];
     return {
       ...state,
-      users: [...state.users, user]
+      users: [...state.users]
     };
   default: 
     return state;
@@ -64,6 +66,7 @@ export const registerUser = (data: REGISTERPAYLOAD) : AUTHACTION => {
     payload: data
   };
 };
+
 
 export const updateReview = (data: REVIEWGIVE) : UPDATEDRESSER => {
   return {

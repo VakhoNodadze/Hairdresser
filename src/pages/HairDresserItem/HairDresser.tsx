@@ -15,7 +15,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from 'redux/ducks';
 import { addDresser } from 'redux/ducks/chosenDressers';
 import { chosenDresser } from 'redux/ducks/chosenDressers';
-import { REGISTERPAYLOAD, updateReview } from 'redux/ducks/authorization';
+import { REGISTERPAYLOAD, updateReview } from 'redux/ducks/hairdressers';
 import Input from 'atoms/Input/Input';
 
 interface Props extends ThemeProps{}
@@ -37,6 +37,8 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
   const { replace } = useHistory();
   const dispatch = useDispatch();
 
+  console.log('chosenDressers', chosenDressers);
+
   const onSubmit = (data: IFormInput) => {
     dispatch(updateReview({ id, review: data }));
   };
@@ -50,30 +52,34 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
   const hairdresser = hairdressers.find((dresser) => dresser.id === id)!;
 
   const renderReviewAbility = () => (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Text>Give your review</Text>
-      <Flex direction='column'>
-        <Flex>
-          {[...Array(10)].map((_, index) => (
-            <>
-              <input key={index} type="radio" name="score" value={index + 1} ref={register} />{index + 1}
-            </>
-          ))}
+    <Flex width='50%' m='auto'>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Text>Give your review</Text>
+        <Flex direction='column'>
+          <Flex>
+            {[...Array(10)].map((_, index) => (
+              <>
+                <input key={index} type="radio" name="score" value={index + 1} ref={register} />{index + 1}
+              </>
+            ))}
+          </Flex>
         </Flex>
-      </Flex>
-      <Controller
-        name='comment'
-        control={control}
-        defaultValue=''
-        as={() => {
-          return <Input bg='rgb(246, 249, 252)' name='comment' fontSize='lg' p={theme.space.tiny} register={register}
-            width='75%' />;
-        }}
-      />
-      <Button>
-            Submit Review
-      </Button>
-    </form>
+        <Controller
+          name='comment'
+          control={control}
+          defaultValue=''
+          as={() => {
+            return <textarea
+              name='comment'
+              ref={register}
+              style={{ height: '100%', width: '100%', padding: '5px', resize: 'none', fontSize: '18px' }} />;
+          }}
+        />
+        <Button>
+                  Submit Review
+        </Button>
+      </form>
+    </Flex>
   );
 
   return (
@@ -89,7 +95,7 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
       </Flex>
       <Flex width='50%' m='auto'>
         <List>
-          {hairdresser.review.map((review, index) => (
+          {hairdresser.review?.map((review, index) => (
             <ListItem my={theme.space.field} key={index}>
               <Text>Score: {review.score}/10</Text>
               <Text>Comment: {review.comment}</Text>
@@ -97,7 +103,7 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
           ))}
         </List>
       </Flex>
-      {renderReviewAbility()}
+      {chosenDressers.find((dresser) => dresser === id) ? renderReviewAbility() : null}
       <Button onClick={() => orderHandler()}>
             Order
       </Button>

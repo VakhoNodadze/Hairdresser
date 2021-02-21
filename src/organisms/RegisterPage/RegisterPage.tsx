@@ -51,20 +51,13 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
                       Please Enter your phone number
           </Text>
           <Flex justify='between' width='50%'>
-            {/*<select style={{ width: '20%' }} defaultValue='995' name='countryCode' register={register}>*/}
-            {/*  {*/}
-            {/*    phonesArray.map((option, index) => (*/}
-            {/*      <option key={option.value}>+{option.value}</option>*/}
-            {/*    ))*/}
-            {/*  }*/}
-            {/*</select>*/}
             <Controller
               name='phoneNumber'
               control={control}
               defaultValue=''
               as={() => {
-                return <Input bg='rgb(246, 249, 252)' name='phoneNumber' fontSize='lg' p={theme.space.tiny} register={register}
-                  width='75%' />;
+                return <Input bg='rgb(246, 249, 252)' name='phoneNumber' fontSize='lg' p={theme.space.tiny}
+                  register={register} width='75%' />;
               }}
             />
           </Flex>
@@ -147,13 +140,16 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
     <>
       <Flex direction='column'>
         <Flex justify='between' width='50%'>
-          {/*<select style={{ width: '20%' }} defaultValue='995' name='countryCode'>*/}
-          {/*  {*/}
-          {/*    phonesArray.map((option, index) => (*/}
-          {/*      <option key={option.value}>+{option.value}</option>*/}
-          {/*    ))*/}
-          {/*  }*/}
-          {/*</select>*/}
+          <Text>Please enter your phone number</Text>
+          <Controller
+            name='phoneNumber'
+            control={control}
+            defaultValue=''
+            as={() => {
+              return <Input bg='rgb(246, 249, 252)' name='phoneNumber' fontSize='lg' p={theme.space.tiny}
+                register={register} width='75%' />;
+            }}
+          />
         </Flex>
         <Flex>
           <Text fontSize='xs'>

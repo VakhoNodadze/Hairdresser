@@ -4,7 +4,7 @@ import { ThemeProps } from 'styled/themes';
 import { useSelector } from 'react-redux';
 import { List, ListItem } from 'molecules/List';
 import { AppState } from 'redux/ducks';
-import { REGISTERPAYLOAD } from 'redux/ducks/authorization';
+import { REGISTERPAYLOAD } from 'redux/ducks/hairdressers';
 import Flex from 'atoms/Flex';
 import Text from 'atoms/Text';
 import Button from 'atoms/Button';
@@ -24,7 +24,7 @@ const Hairdressers: FC <Props> = ({ theme }) => {
   return (
     <Flex justify='center' align='center'>
       <List mt={theme.space.xLarge}>
-        {users.map((user) => (
+        {users.filter((user) => !user.isUser).map((user) => (
           <ListItem border='1px solid black' m={theme.space.tiny} p={theme.space.mid}>
             <Flex width='100%' justify='between'>
               <Flex direction='column'>

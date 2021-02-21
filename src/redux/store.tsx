@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { rootReducer, AppState } from './ducks';
-import { Action } from './ducks/authorization';
+import { Action } from './ducks/hairdressers';
 import thunk, { ThunkMiddleware } from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
