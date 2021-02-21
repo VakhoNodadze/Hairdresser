@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+It's a simple Hardresser's application.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Functionalities:
 
-## Available Scripts
+1)You can register as a client or as a hairdresser
 
-In the project directory, you can run:
+2)Each role has it's own specific fields
 
-### `yarn start`
+3)If you register as a hairdresser, you're specifications will be
+added to the list of available hairdressers. You cannot login
+as a hairdresser
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4)If you register as a client, you can login and see all th
+available hairdressers, including the ones you might have registered as
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+5)You can book them. After you book them, you can give them a review
+consisting of a score 1-10 and a comment.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Using redux for registration, ordering and reviews.
 
-### `yarn build`
+Execuse me for the poor design, this project was done in 10-12 hours.
+It just has bare bones to show the neccessary requirements. 
+Adding some more styling is a matter of 2-3 hours.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+To view the application, downlaod the project, run npm install or yarn install
+After that, run npm start or yarn start
