@@ -69,7 +69,7 @@ const useRegistration = () => {
 
   const onSubmit = (data:any, e: any) => {
     e.preventDefault();
-    dispatch(registerUser({ isUser: registerAddresser === 'client', ...data, id: v4() }));
+    dispatch(registerUser({ isUser: registerAddresser === 'client', ...data, id: v4(), review: [] }));
   };
 
   return {

@@ -45,11 +45,12 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
 
   const orderHandler = () => {
     replace('/hairdressers');
-    const orderedHairdresser = users.find((user) => user.id === id);
     dispatch(addDresser(id));
   };
 
-  const hairdresser = hairdressers.find((dresser) => dresser.id === id)!;
+  const hairdresser = users.find((dresser) => dresser.id === id)!;
+
+  console.log('ID', hairdressers);
 
   const renderReviewAbility = () => (
     <Flex width='50%' m='auto'>
