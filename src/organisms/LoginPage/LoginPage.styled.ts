@@ -6,6 +6,9 @@ export const LoginPageStyled = styled.form`
   padding: 3vh 0;
   .top-content {
     padding: 0 2.5rem;
+    .flex {
+      display: flex;
+    }
     .content__image-container {
       height: 7.9rem;
       width: auto;
@@ -30,12 +33,13 @@ export const LoginPageStyled = styled.form`
           padding: 0;
         }
       }
-      .email {
-        margin-right: 1.6rem;
-      }
+    }
+    .email {
+      margin-right: 1.6rem;
+      width: 50%;
     }
     .content__password {
-      flex: 1.4;
+      width: 50%;
       padding-right: 1rem;
       .password__forgot {
         color: #5c5bc1;
@@ -53,7 +57,6 @@ export const LoginPageStyled = styled.form`
     padding: 0 2.5rem;
     .checkbox {
       p {
-        font-family: ${({ theme }) => theme.fontFamilies.semiBold};
         font-weight: 600;
         margin-left: 0.5rem;
       }

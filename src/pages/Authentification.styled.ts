@@ -8,13 +8,14 @@ export const LoginContainerRouterStyled = styled(Layout)`
 type LayoutWrapperStyledPropsType = { $backgroundImage: string };
 
 export const LayoutWrapperStyled = styled(Layout)<LayoutWrapperStyledPropsType>`
-  height: 100%;
+  height: 100vh;
   flex-direction: column !important;
   .content-wrapper {
     background-image: url(${({ $backgroundImage }) => $backgroundImage});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

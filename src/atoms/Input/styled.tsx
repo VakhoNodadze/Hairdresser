@@ -1,4 +1,4 @@
-import { styled } from 'styled/themes';
+import { styled, ThemeProps, fontSizes, colorCheme } from 'styled/themes';
 import {
   space,
   SpaceProps,
@@ -13,7 +13,19 @@ import {
   typography
 } from 'styled-system';
 
-const StyledContainer = styled.input `
+
+type SystemProps = ThemeProps & SpaceProps & LayoutProps & TypographyProps & ColorProps & FlexboxProps & BorderProps
+
+interface Props extends SystemProps{
+  fontSize: keyof typeof fontSizes;
+  color?: keyof typeof colorCheme;
+  fluid?: boolean;
+  isDisabled?: boolean;
+  isCircular?: boolean;
+  [x:string]: any;
+  variant: any;
+}
+const StyledContainer = styled.input<Props> `
   width: 90px;
   height: 100%;
   

@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, createContext } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+
+import { lightTheme, darkTheme } from './styled/themes';
+import GlobalStyle from './styled/global';
+import Router from './route/index';
+
+export const StateContext = createContext({ changeTheme: () => {console.log();} });
 
 function App() {
+  const [themeState, setThemeState] = useState(lightTheme);
+  const handleThemeChange = () => {
+    if(themeState === lightTheme) {setThemeState(darkTheme);}
+    if(themeState === darkTheme) {setThemeState(lightTheme);}
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={themeState}>
+      <StateContext.Provider value={{ changeTheme: handleThemeChange }}>
+        <GlobalStyle />
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </StateContext.Provider>
+    </ThemeProvider>
   );
 }
 

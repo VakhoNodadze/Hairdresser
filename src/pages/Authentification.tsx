@@ -1,30 +1,37 @@
 import React, { FC, Fragment } from 'react';
+import { Layout } from 'antd';
+import { Redirect, Route, Switch } from 'react-router-dom';
+
 import Flex from 'atoms/Flex';
 import Text from 'atoms/Text';
+
+import Bg from 'assets/images/storyHubBgr.jpg';
+
 import { Grid, GridItem } from 'atoms/Grid';
 import Input from 'atoms/Input';
-
 import { LayoutWrapperStyled, LoginRegisterWrapperStyled } from './Authentification.styled';
+import LoginPage from 'organisms/LoginPage';
+import RegisterPage from 'organisms/RegisterPage';
+import TabBarHeader from 'molecules/TabHeader';
 
 const Authentication = () => {
   return (
-    <LayoutWrapperStyled $backgroundImage={images.storyHubBgr}>
+    <LayoutWrapperStyled $backgroundImage={Bg}>
       <Layout className={'content-wrapper'}>
         <div className={'login__top-text'}>
           <Text
-            color={'#fff'}
-            fontSize={24}
-            fontFamily={fontFamilies.bold}
+            color='white'
+            fontSize={'xl'}
             lineHeight={32}
           >
               Story telling for businesses
           </Text>
-          <Title.H2 color={'#fff'} fontSize={72}>
+          <Text color='white' fontSize='xxl'>
               Let your story begin!
-          </Title.H2>
+          </Text>
         </div>
         <Switch>
-          <Redirect exact from={'/auth'} to={'/auth/login'} />
+          <Redirect exact from={'/'} to={'/auth/login'} />
           <Route
             exact
             path={'/auth/:authType(login|register)'}
@@ -37,12 +44,12 @@ const Authentication = () => {
                       <Route
                         exact
                         path={'/auth/:authType(login)'}
-                        component={LoginPageLazy}
+                        component={LoginPage}
                       />
                       <Route
                         exact
                         path={'/auth/:authType(register)'}
-                        component={RegistrationPageLazy}
+                        component={RegisterPage}
                       />
                     </Switch>
                   </div>
@@ -50,19 +57,13 @@ const Authentication = () => {
               );
             }}
           />
-
-          <Route
-            exact
-            path={'/auth/add-company'}
-            component={AddCompanyPageLazy}
-          />
-          <Route
-            exact
-            path={'/auth/invite-users'}
-            component={InviteUsersPageLazy}
-          />
-          <Redirect to={'/auth/login'} />
         </Switch>
+        {/*<LoginRegisterWrapperStyled>*/}
+        {/*  <TabBarHeader />*/}
+        {/*  <div className={'auth-white-wrapper'}>*/}
+        {/*    <LoginPage />*/}
+        {/*  </div>*/}
+        {/*</LoginRegisterWrapperStyled>*/}
       </Layout>
     </LayoutWrapperStyled>
   );

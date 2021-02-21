@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import sidebar from './sidebar';
+import register from './authorization';
 
 export const rootReducer = combineReducers({
-  sidebar
+  register
 });
 
 export type AppState = ReturnType<typeof rootReducer>
