@@ -2,7 +2,7 @@ type RegistrationFormType = {
     firstName: string;
     lastName: string;
     phoneNumber: string;
-    countryCode: string;
+    price: string;
     password: string;
     password_confirmation: string;
 };

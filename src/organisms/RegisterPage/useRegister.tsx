@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-
 import { useDispatch } from 'react-redux';
-import { AppState } from 'redux/ducks';
-import { REGISTERPAYLOAD, registerUser } from 'redux/ducks/hairdressers';
+
+import { registerUser } from 'redux/ducks/hairdressers';
 import * as Yup from 'yup';
 import { v4 } from 'uuid';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
 import { phoneRegExp } from 'utils/Regex';
+import { message } from 'antd';
 
 
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required('First name is required'),
   lastName: Yup.string().required('Last name is required'),
-  countryCode: Yup.string().required(),
-  phone: Yup.string()
+  price: Yup.string().required('Price is required'),
+  phoneNumber: Yup.string()
     .matches(phoneRegExp, 'Phone number is not valid')
     .required(),
   password: Yup.string().min(8).required('Password is required'),
@@ -27,33 +27,31 @@ const schema = Yup.object().shape({
 });
 
 const clientSchema = Yup.object().shape({
-  countryCode: Yup.string().required(),
-  phone: Yup.string()
+  phoneNumber: Yup.string()
     .matches(phoneRegExp, 'Phone number is not valid')
     .required(),
   password: Yup.string().min(8).required('Password is required'),
   password_confirmation: Yup.string().oneOf(
     [Yup.ref('password'), undefined],
     'Passwords must match',
-  )
+  ).required('Both passwords are required')
 });
 const useRegistration = () => {
   const [loading, setLoading] = useState(false);
   const [registerAddresser, setRegisterAddresser] = useState('client');
-  const [fieldData, setFieldData] = useState();
   const {
     handleSubmit,
     control,
     setValue,
     register,
     watch,
-    errors,
-    setError
+    errors
   } = useForm<RegistrationFormType>({
-    // resolver: yupResolver(registerAddresser === 'client' ? clientSchema : schema),
+    resolver: yupResolver(registerAddresser === 'client' ? clientSchema : schema),
     shouldFocusError: true
   });
 
+  console.log(errors);
   const dispatch = useDispatch();
 
   const registerHairdresser = () => {
@@ -70,6 +68,7 @@ const useRegistration = () => {
     e.preventDefault();
     dispatch(registerUser({ isUser: registerAddresser === 'client', ...data, id: v4(), review: [] }));
     push('/auth/login');
+    message.success('User Registered!');
   };
 
   return {
@@ -82,7 +81,6 @@ const useRegistration = () => {
     register,
     watch,
     errors,
-    fieldData,
     registerAddresser,
     registerClient,
     registerHairdresser

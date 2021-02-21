@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { withTheme } from 'styled-components';
 
+import Element from 'atoms/Element';
 import { colorCheme, fontSizes, ThemeProps } from 'styled/themes';
-import { StyledContainer } from './styled';
+import { StyledContainer, StyledInput, StyledError } from './styled';
 
 import {
   SpaceProps,
@@ -21,11 +22,15 @@ interface Props extends SystemProps{
   type?: string;
   register: any;
   name?: string;
+  error?: any;
 }
 
-const Input: FC <Props> = ({ placeholder , type, register, name, theme, ...rest }) => {
+const Input: FC <Props> = ({ placeholder , type, register, error, name, theme, ...rest }) => {
   return (
-    <StyledContainer placeholder={placeholder} type={type} name={name} {...rest} ref={register} />
+    <StyledContainer>
+      <StyledInput placeholder={placeholder} type={type} name={name} error={error} {...rest} ref={register} />
+      {error?.message && <StyledError>{error?.message}</StyledError>}
+    </StyledContainer>
   );
 };
 

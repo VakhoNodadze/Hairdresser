@@ -2,13 +2,8 @@ import React, { FC, Fragment } from 'react';
 import { Layout } from 'antd';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import Flex from 'atoms/Flex';
 import Text from 'atoms/Text';
-
 import Bg from 'assets/images/storyHubBgr.jpg';
-
-import { Grid, GridItem } from 'atoms/Grid';
-import Input from 'atoms/Input';
 import { LayoutWrapperStyled, LoginRegisterWrapperStyled } from './Authentification.styled';
 import LoginPage from 'organisms/LoginPage';
 import RegisterPage from 'organisms/RegisterPage';

@@ -28,25 +28,25 @@ const LoginPage: FC <Props> = ({ theme }) => {
     <>
       <Flex>
         <Flex m={theme.space.mid}>
-          <Flex direction='column'>
+          <Flex direction='column' m={theme.space.default}>
             <Text>Phone Number</Text>
             <Controller
               name='phoneNumber'
               control={control}
               as={() => {
                 return <Input bg='rgb(246, 249, 252)' name='phoneNumber' fontSize='lg' p={theme.space.tiny}
-                  register={register} width='75%' />;
+                  register={register} />;
               }}
             />
           </Flex>
-          <Flex direction='column'>
+          <Flex direction='column' m={theme.space.default}>
             <Text>Password</Text>
             <Controller
               name='password'
               control={control}
               as={() => {
                 return <Input bg='rgb(246, 249, 252)' name='password' fontSize='lg' p={theme.space.tiny} register={register}
-                  width='75%' type='password' />;
+                  type='password' />;
               }}
             />
           </Flex>

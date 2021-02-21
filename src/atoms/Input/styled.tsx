@@ -12,6 +12,7 @@ import {
   TypographyProps,
   typography
 } from 'styled-system';
+import { Simulate } from 'react-dom/test-utils';
 
 
 type SystemProps = ThemeProps & SpaceProps & LayoutProps & TypographyProps & ColorProps & FlexboxProps & BorderProps
@@ -24,17 +25,36 @@ interface Props extends SystemProps{
   isCircular?: boolean;
   [x:string]: any;
   variant: any;
+  error: boolean;
 }
-const StyledContainer = styled.input<Props> `
-  width: 90px;
+
+const StyledContainer = styled.div `
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+  height: 50px;
+`;
+
+const StyledError = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-100%, 50%);
+  color: red;
+`;
+
+const StyledInput = styled.input<Props> `
+  width: 100%;
   height: 100%;
-  
   color: ${({ theme }) => theme.colors.primaryIcons};
   background-color: ${({ theme }) => theme.colors.inputBg};
-  border: 1px solid ${({ theme }) => theme.colors.inputBorder};
+  border: 1px solid ${({ theme, error }) => (error ? theme.colors.red400 : theme.colors.inputBorder)};
   border-radius: 0 5px 5px 0;
-  border-left: 0;
-  
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   padding-left: ${({ theme }) => theme.space.tiny};
   &::placeholder{
@@ -47,4 +67,4 @@ const StyledContainer = styled.input<Props> `
   ${typography};
 `;
 
-export { StyledContainer };
+export { StyledContainer, StyledInput, StyledError };

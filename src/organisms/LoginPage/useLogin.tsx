@@ -39,17 +39,20 @@ const useRegistration = () => {
 
   const onSubmit = (data:any, e: any) => {
     e.preventDefault();
+    let isLoggedIn = false;
     for(let i = 0; i < users.length; i++){
       if(users[i].phoneNumber === data.phoneNumber && users[i].password === data.password){
         if(users[i].isUser){
           replace('/hairdressers');
           localStorage.setItem('isLoggedIn', JSON.stringify(true));
+          isLoggedIn = true;
         }else{
           message.error('You are trying to log in as hairdresser');
         }
       }
     }
-    message.error('Invalid user or password');
+    if(!isLoggedIn)
+    {message.error('Invalid user or password');}
     
   };
 

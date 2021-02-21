@@ -6,7 +6,6 @@ import { useForm, Controller } from 'react-hook-form';
 
 import { ThemeProps } from 'styled/themes';
 import { useHistory, useParams, Link } from 'react-router-dom';
-import hairdressers from 'redux/Hairdressers';
 import Flex from 'atoms/Flex';
 import Text from 'atoms/Text';
 import Button from 'atoms/Button';
@@ -14,9 +13,7 @@ import { List, ListItem } from 'molecules/List';
 import { useSelector } from 'react-redux';
 import { AppState } from 'redux/ducks';
 import { addDresser } from 'redux/ducks/chosenDressers';
-import { chosenDresser } from 'redux/ducks/chosenDressers';
 import { REGISTERPAYLOAD, updateReview } from 'redux/ducks/hairdressers';
-import Input from 'atoms/Input/Input';
 
 interface Props extends ThemeProps{}
 
