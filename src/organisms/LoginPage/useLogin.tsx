@@ -44,7 +44,7 @@ const useRegistration = () => {
       if(users[i].phoneNumber === data.phoneNumber && users[i].password === data.password){
         if(users[i].isUser){
           replace('/hairdressers');
-          localStorage.setItem('isLoggedIn', JSON.stringify(true));
+          localStorage.setItem('userId', users[i].id);
           isLoggedIn = true;
         }else{
           message.error('You are trying to log in as hairdresser');
