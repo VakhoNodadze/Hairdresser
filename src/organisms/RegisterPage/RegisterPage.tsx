@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { withTheme } from 'styled-components';
 import { ThemeProps } from 'styled/themes';
+import { Controller } from 'react-hook-form';
 
 import { RegistrationPageStyled } from './RegisterPage.styled';
 import Text from 'atoms/Text';
@@ -18,6 +19,7 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
     handleSubmit,
     onSubmit,
     register,
+    control,
     errors,
     registerHairdresser,
     registerClient,
@@ -68,7 +70,13 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
           <Text fontSize='xs' width='30%'>
                   Please Enter your First Name
           </Text>
-          <Input bg='rgb(246, 249, 252)' name='firstName' fontSize='lg' p={theme.space.tiny} register={register}/>
+          <Controller
+            name='firstName'
+            control={control}
+            defaultValue=''
+            as={<Input bg='rgb(246, 249, 252)' fontSize='lg' p={theme.space.tiny}
+            />}
+          />
           <Text mr={theme.space.default} color='red400'
             style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
             {errors.firstName?.message}
@@ -79,7 +87,13 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
           <Text fontSize='xs' width='30%' >
                   Please Enter your Last Name
           </Text>
-          <Input bg='rgb(246, 249, 252)' name='lastName' fontSize='lg' p={theme.space.tiny} register={register}/>
+          <Controller
+            name='lastName'
+            defaultValue=''
+            control={control}
+            as={<Input bg='rgb(246, 249, 252)' fontSize='lg' p={theme.space.tiny}
+            />}
+          />
           <Text mr={theme.space.default} color='red400'
             style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
             {errors.lastName?.message}

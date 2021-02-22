@@ -13,8 +13,8 @@ import { message } from 'antd';
 
 
 const barberSchema = Yup.object().shape({
-  // firstName: Yup.string().required('First name is required'),
-  // lastName: Yup.string().required('Last name is required'),
+  firstName: Yup.string().required('First name is required'),
+  lastName: Yup.string().required('Last name is required'),
   price: Yup.string().required('Price is required'),
   email: Yup.string().matches(emailRegexp, 'Email is not valid').required(),
   phoneNumber: Yup.string()
@@ -42,7 +42,8 @@ const useRegistration = () => {
   const {
     handleSubmit,
     register,
-    errors
+    errors,
+    control
   } = useForm<RegistrationFormType>({
     resolver: yupResolver(registerAddresser === 'client' ? clientSchema : barberSchema)
   });
@@ -61,7 +62,6 @@ const useRegistration = () => {
 
   const onSubmit = (data:any, e: any) => {
     e.preventDefault();
-    console.log('data', data);
     dispatch(registerUser({ isUser: registerAddresser === 'client', ...data, id: v4(), review: [] }));
     push('/auth/login');
     message.success('User Registered!');
@@ -72,6 +72,7 @@ const useRegistration = () => {
     handleSubmit,
     register,
     errors,
+    control,
     registerAddresser,
     registerClient,
     registerHairdresser

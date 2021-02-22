@@ -20,7 +20,7 @@ interface Props extends SystemProps{
   fontSize?: keyof typeof fontSizes;
   color?: keyof typeof colorCheme;
   type?: string;
-  register: any;
+  register?: any;
   name?: string;
   autocomplete?: string;
 }
