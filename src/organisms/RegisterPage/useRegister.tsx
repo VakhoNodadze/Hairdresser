@@ -13,8 +13,8 @@ import { message } from 'antd';
 
 
 const barberSchema = Yup.object().shape({
-  firstName: Yup.string().required('First name is required'),
-  lastName: Yup.string().required('Last name is required'),
+  // firstName: Yup.string().required('First name is required'),
+  // lastName: Yup.string().required('Last name is required'),
   price: Yup.string().required('Price is required'),
   email: Yup.string().matches(emailRegexp, 'Email is not valid').required(),
   phoneNumber: Yup.string()
