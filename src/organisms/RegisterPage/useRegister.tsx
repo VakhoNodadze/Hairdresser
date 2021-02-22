@@ -47,7 +47,6 @@ const useRegistration = () => {
     resolver: yupResolver(registerAddresser === 'client' ? clientSchema : barberSchema)
   });
 
-  console.log(errors);
   const dispatch = useDispatch();
 
   const registerHairdresser = () => {

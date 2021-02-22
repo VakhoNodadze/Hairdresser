@@ -22,7 +22,6 @@ const TabBarHeader: FC <Props> = ({ theme }) => {
     padding: '5px 0',
     margin: '0 10px'
   };
-  console.log(authType);
   return (
     <TabBarHeaderStyled align={'middle'}>
       <div style={authType === 'login' ? style : { margin: '0 10px' }}>
