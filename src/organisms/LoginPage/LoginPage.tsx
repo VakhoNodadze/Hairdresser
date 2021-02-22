@@ -15,12 +15,8 @@ interface Props extends ThemeProps{}
 
 const LoginPage: FC <Props> = ({ theme }) => {
   const {
-    fontFamilies,
-    loading,
     onSubmit,
     handleSubmit,
-    control,
-    errors,
     register
   } = useLogin();
 
@@ -30,25 +26,13 @@ const LoginPage: FC <Props> = ({ theme }) => {
         <Flex m={theme.space.mid}>
           <Flex direction='column' m={theme.space.default}>
             <Text>Phone Number</Text>
-            <Controller
-              name='phoneNumber'
-              control={control}
-              as={() => {
-                return <Input bg='rgb(246, 249, 252)' name='phoneNumber' fontSize='lg' p={theme.space.tiny}
-                  register={register} />;
-              }}
-            />
+            <Input bg='rgb(246, 249, 252)' name='phoneNumber' fontSize='lg' p={theme.space.tiny}
+              register={register} />
           </Flex>
           <Flex direction='column' m={theme.space.default}>
             <Text>Password</Text>
-            <Controller
-              name='password'
-              control={control}
-              as={() => {
-                return <Input bg='rgb(246, 249, 252)' name='password' fontSize='lg' p={theme.space.tiny} register={register}
-                  type='password' />;
-              }}
-            />
+            <Input bg='rgb(246, 249, 252)' name='password' fontSize='lg' p={theme.space.tiny} register={register}
+              type='password' />
           </Flex>
         </Flex>
       </Flex>

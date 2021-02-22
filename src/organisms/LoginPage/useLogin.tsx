@@ -23,7 +23,6 @@ const useRegistration = () => {
     // resolver: yupResolver(schema),
     shouldFocusError: true
   });
-  const [loading, setLoading] = useState(false);
   const users = useSelector<AppState, REGISTERPAYLOAD[]>((state) => state.register.users);
 
   const { replace } = useHistory();
@@ -57,8 +56,6 @@ const useRegistration = () => {
   };
 
   return {
-    loading,
-    setLoading,
     onSubmit,
     handleSubmit,
     control,
