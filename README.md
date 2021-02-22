@@ -16,6 +16,8 @@ available hairdressers, including the ones you might have registered as
 5)You can book them. After you book them, you can give them a review
 consisting of a score 1-10 and a comment.
 
+6)You can only review or book them, if you are authorized
+
 
 Using redux for registration, ordering and reviews.
 

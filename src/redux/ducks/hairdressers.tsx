@@ -1,4 +1,4 @@
-import hairdressers from '../Hairdressers';
+import hairdressers from 'utils/DummyData/HairdressersData';
 const REGISTER = 'REGISTER';
 const REGISTER_HAIRDRESSER = 'REGISTER_HAIRDRESSER';
 const UPDATE_REVIEW = 'UPDATE_REVIEW';

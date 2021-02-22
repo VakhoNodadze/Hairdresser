@@ -1,8 +1,6 @@
-import { v4 } from 'uuid';
-
 const hairdressers = [
   {
-    id: v4(),
+    id: '1',
     isUser: false,
     firstName: 'Bruce',
     lastName: 'Wayne',
@@ -24,7 +22,7 @@ const hairdressers = [
     ]
   },
   {
-    id: v4(),
+    id: '2',
     isUser: false,
     firstName: 'Jason',
     lastName: 'Todd',
@@ -46,7 +44,7 @@ const hairdressers = [
     ]
   },
   {
-    id: v4(),
+    id: '3',
     isUser: false,
     firstName: 'Clark',
     lastName: 'Kent',
@@ -64,7 +62,7 @@ const hairdressers = [
     ]
   },
   {
-    id: v4(),
+    id: '4',
     isUser: false,
     firstName: 'Peter',
     lastName: 'Parkers',
@@ -86,7 +84,7 @@ const hairdressers = [
     ]
   },
   {
-    id: v4(),
+    id: '5',
     isUser: false,
     firstName: 'Vakhtang',
     lastName: 'Nodadze',
@@ -103,7 +101,7 @@ const hairdressers = [
     ]
   },
   {
-    id: v4(),
+    id: '6',
     isUser: true,
     phoneNumber: '11',
     countryCode: '',

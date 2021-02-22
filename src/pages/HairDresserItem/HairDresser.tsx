@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { withTheme } from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
+import { useHistory, useParams, Link } from 'react-router-dom';
 
 import { ThemeProps } from 'styled/themes';
-import { useHistory, useParams, Link } from 'react-router-dom';
 import Flex from 'atoms/Flex';
 import Text from 'atoms/Text';
 import Button from 'atoms/Button';
@@ -28,7 +28,7 @@ interface IFormInput {
 }
 const HairDresserItem: FC <Props> = ({ theme }) => {
   const { register, handleSubmit,control } = useForm<IFormInput>();
-    
+
   const chosenDressers = useSelector<AppState, string[]>((state) => state.chooseDresser.chosenDressers);
   const users = useSelector<AppState, REGISTERPAYLOAD[]>((state) => state.register.users);
   const { id } = useParams<RouteParamsType>();
@@ -36,14 +36,27 @@ const HairDresserItem: FC <Props> = ({ theme }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (data: IFormInput) => {
-    dispatch(updateReview({ id, review: data }));
-    message.success('Review Added');
+    const userId = localStorage.getItem('userId');
+    if(!userId) {
+      message.error('You are not authorized');
+      replace('/auth/login');
+    }
+    else {
+      dispatch(updateReview({ id, review: data }));
+      message.success('Review Added');
+    }
   };
 
   const orderHandler = () => {
-    replace('/hairdressers');
-    dispatch(addDresser(id));
-    message.success('Hairdresser Chosen. You now review them');
+    const userId = localStorage.getItem('userId');
+    if(!userId){
+      message.error('You are not authorized');
+      replace('/auth/login');
+    }else{
+      replace('/hairdressers');
+      dispatch(addDresser(id));
+      message.success('Hairdresser Chosen. You now review them');
+    }
   };
 
   const hairdresser = users.find((dresser) => dresser.id === id)!;
