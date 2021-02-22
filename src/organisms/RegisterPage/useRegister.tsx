@@ -7,15 +7,16 @@ import * as Yup from 'yup';
 import { v4 } from 'uuid';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
-import { phoneRegExp } from 'utils/Regex';
+import { phoneRegExp, emailRegexp } from 'utils/Regex';
 import { message } from 'antd';
 
 
 
-const schema = Yup.object().shape({
+const barberSchema = Yup.object().shape({
   firstName: Yup.string().required('First name is required'),
   lastName: Yup.string().required('Last name is required'),
   price: Yup.string().required('Price is required'),
+  email: Yup.string().matches(emailRegexp, 'Email is not valid').required(),
   phoneNumber: Yup.string()
     .matches(phoneRegExp, 'Phone number is not valid')
     .required(),
@@ -31,7 +32,7 @@ const clientSchema = Yup.object().shape({
     .matches(phoneRegExp, 'Phone number is not valid')
     .required(),
   password: Yup.string().min(8).required('Password is required'),
-  password_confirmation: Yup.string().oneOf(
+  passwordConfirmation: Yup.string().oneOf(
     [Yup.ref('password'), undefined],
     'Passwords must match',
   ).required('Both passwords are required')
@@ -42,13 +43,10 @@ const useRegistration = () => {
   const {
     handleSubmit,
     control,
-    setValue,
     register,
-    watch,
     errors
   } = useForm<RegistrationFormType>({
-    resolver: yupResolver(registerAddresser === 'client' ? clientSchema : schema),
-    shouldFocusError: true
+    resolver: yupResolver(registerAddresser === 'client' ? clientSchema : barberSchema)
   });
 
   console.log(errors);
@@ -66,6 +64,7 @@ const useRegistration = () => {
 
   const onSubmit = (data:any, e: any) => {
     e.preventDefault();
+    console.log('data', data);
     dispatch(registerUser({ isUser: registerAddresser === 'client', ...data, id: v4(), review: [] }));
     push('/auth/login');
     message.success('User Registered!');
@@ -77,9 +76,7 @@ const useRegistration = () => {
     onSubmit,
     handleSubmit,
     control,
-    setValue,
     register,
-    watch,
     errors,
     registerAddresser,
     registerClient,

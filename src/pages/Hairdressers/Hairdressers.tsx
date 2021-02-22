@@ -25,7 +25,7 @@ const Hairdressers: FC <Props> = ({ theme }) => {
     <Flex justify='center' align='center'>
       <List mt={theme.space.xLarge}>
         {users.filter((user) => !user.isUser).map((user) => (
-          <ListItem border='1px solid black' m={theme.space.tiny} p={theme.space.mid}>
+          <ListItem key={user.id} border='1px solid black' m={theme.space.tiny} p={theme.space.mid}>
             <Flex width='100%' justify='between'>
               <Flex direction='column'>
                 <Text>
