@@ -22,12 +22,13 @@ interface Props extends SystemProps{
   type?: string;
   register: any;
   name?: string;
+  autocomplete?: string;
 }
 
-const Input: FC <Props> = ({ placeholder , type, register, name, theme, ...rest }) => {
+const Input: FC <Props> = ({ placeholder , type, register, autocomplete, name, theme, ...rest }) => {
   return (
     <StyledContainer>
-      <StyledInput placeholder={placeholder} type={type} name={name} {...rest} ref={register} />
+      <StyledInput placeholder={placeholder} type={type} name={name} {...rest} ref={register} autocomplete={autocomplete} />
     </StyledContainer>
   );
 };

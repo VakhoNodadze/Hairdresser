@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
-import { Row, Col } from 'antd';
 import { withTheme } from 'styled-components';
 import { ThemeProps } from 'styled/themes';
-import { Controller } from 'react-hook-form';
 
 import { RegistrationPageStyled } from './RegisterPage.styled';
 import Text from 'atoms/Text';
@@ -17,7 +15,6 @@ interface Props extends ThemeProps{}
 const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
 
   const {
-    control,
     handleSubmit,
     onSubmit,
     register,
@@ -117,6 +114,7 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
                   Please Enter your password
           </Text>
           <Input bg='rgb(246, 249, 252)' name='password' fontSize='lg' p={theme.space.tiny} register={register}
+            autocomplete="off"
             type='password' />
           <Text mr={theme.space.default} color='red400'
             style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
@@ -128,7 +126,7 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
           <Text fontSize='xs' width='30%' >
                  Confirm your password
           </Text>
-          <Input bg='rgb(246, 249, 252)' name='passwordConfirmation' fontSize='lg' p={theme.space.tiny}
+          <Input bg='rgb(246, 249, 252)' name='passwordConfirmation' fontSize='lg' p={theme.space.tiny} autocomplete="off"
             register={register} type='password' />
           <Text mr={theme.space.default} color='red400'
             style={{ position: 'absolute', top: 0, right: 0, transform: 'translate(0, 50%)' }}>
@@ -182,13 +180,7 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
 
   return (
     <RegistrationPageStyled onSubmit={handleSubmit(onSubmit)}>
-      <Col span={24} className={'content__form-container'}>
-      </Col>
-      <Row
-        align={'middle'}
-        justify={'end'}
-        className={'content__submit-container'}
-      >
+      <Flex direction='column' align='center' justify='end'>
         <Flex width='50%' mx='auto' justify='between' mb={theme.space.large}>
           <Text style={{ cursor: 'pointer' }} onClick={registerClient}>
               Register as <Text display='inline' color='blue200' span style={renderClientColor()}>
@@ -201,10 +193,12 @@ const RegistrationPage: FC <Props> = ({ theme }): React.ReactElement => {
           </Text>
         </Flex>
         {registerAddresser === 'client' ? renderClientRegister() : renderHairdresserRegister()}
-        <Button>
-              Submit
-        </Button>
-      </Row>
+        <Flex>
+          <Button>
+            Submit
+          </Button>
+        </Flex>
+      </Flex>
     </RegistrationPageStyled>
   );
 };

@@ -38,11 +38,9 @@ const clientSchema = Yup.object().shape({
   ).required('Both passwords are required')
 });
 const useRegistration = () => {
-  const [loading, setLoading] = useState(false);
   const [registerAddresser, setRegisterAddresser] = useState('client');
   const {
     handleSubmit,
-    control,
     register,
     errors
   } = useForm<RegistrationFormType>({
@@ -71,11 +69,8 @@ const useRegistration = () => {
   };
 
   return {
-    loading,
-    setLoading,
     onSubmit,
     handleSubmit,
-    control,
     register,
     errors,
     registerAddresser,
